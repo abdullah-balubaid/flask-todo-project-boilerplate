@@ -15,22 +15,22 @@ def index():
     return "Hello from Flask!"
 
 @app.route('/todosCreate',methods=["[POST]"])
-def create_todo():
+def create_todo_route():
     # create
     return {}
 
 @app.route('/todosRead', methods=["GET"])
-def read_todo():
+def get_todo_route():
     # read
     return {}
 
 @app.route('/todosUpdate', methods=["PUT"])
-def update_todo():
+def update_todo_route():
     # update
     return {}
 
 @app.route('/todosDelete', methods=["DELETE"])
-def delete_todo():
+def delete_todo_route():
     # delete
     return {}
 
