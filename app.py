@@ -14,25 +14,26 @@ CORS(app)
 def index():
     return "Hello from Flask!"
 
-@app.route("/todos", methods=["POST"])
-def create_todo_route():
+@app.route('/todosCreate',methods=["[POST]"])
+def create_todo():
     # create
     return {}
 
-@app.route("/todos", methods=["GET"])
-def get_todo_route():
-    # get
+@app.route('/todosRead', methods=["GET"])
+def read_todo():
+    # read
     return {}
 
-@app.route("/todos", methods=["PUT"])
-def update_todo_route():
+@app.route('/todosUpdate', methods=["PUT"])
+def update_todo():
     # update
     return {}
 
-@app.route("/todos", methods=["DELETE"])
-def delete_todo_route():
+@app.route('/todosDelete', methods=["DELETE"])
+def delete_todo():
     # delete
     return {}
+
 
 
 if __name__ == '__main__':
