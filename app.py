@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import config
 import crud
+import helpers
 
 app = Flask(__name__)
 
@@ -14,10 +15,24 @@ CORS(app)
 def index():
     return "Hello from Flask!"
 
-@app.route('/todos',methods=["[POST]"])
+@app.route("/todos", methods=["GET"])
+def get_todos_route():
+    tasks = helpers.read_db_file()
+    return tasks
+
+@app.route('/todos',methods=["POST"])
 def create_todo_route():
     # create
-    return {}
+    data = request.get_json()
+    if 'description' not in data:
+        return jsonify ({"error": "description required"}), 400
+    
+    description = data['description']
+    new_task = crud.create_todo(description) # return error or task
+    if 'error' in new_task:
+        return jsonify(new_task), 500
+    return jsonify(new_task), 201
+    
 
 @app.route('/todos/<int:todo_id>', methods=["GET"])
 def get_todo_route(todo_id):
