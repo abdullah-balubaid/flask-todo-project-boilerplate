@@ -7,8 +7,9 @@ def get_todo_by_id(todo_id):
     tasks = helpers.read_db_file()
     
     for task in tasks:
-          if task['id'] == todo_id:
+        if task['id'] == todo_id:
             return task
+ 
 
 def update_todo(todo_id, update_data):
     task = get_todo_by_id(todo_id)
@@ -20,6 +21,7 @@ def update_todo(todo_id, update_data):
         task['title'] = update_data['title']
     if 'description' in update_data:
         task['description'] = update_data['description']
+
     
     tasks.append(task)
     helpers.write_db_file(tasks)
@@ -35,5 +37,3 @@ def delete_todo(todo_id):
     
     helpers.write_db_file(tasks)
 
-
-    
