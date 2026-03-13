@@ -88,16 +88,13 @@ def update_todo(todo_id, update_data):
     tasks = helpers.read_db_file()
     tasks.remove(task)
     
-    if 'title' in update_data:
-        task['title'] = update_data['title']
-    if 'description' in update_data:
-        task['description'] = update_data['description']
-
+    for key, value in update_data.items():
+        task[key] = value
     
     tasks.append(task)
     helpers.write_db_file(tasks)
 
-    return tasks
+    return task
 
 
 def delete_todo(todo_id):
